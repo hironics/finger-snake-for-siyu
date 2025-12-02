@@ -241,9 +241,10 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
 
             if (distanceTraveled >= SEGMENT_SPACING && drawnSegments < targetLength) {
                 ctx.beginPath();
-                ctx.fillStyle = drawnSegments === 0 ? '#10b981' : '#34d399'; 
+                // PURPLE SNAKE: Head/Shadow (Purple 500), Body (Purple 400)
+                ctx.fillStyle = drawnSegments === 0 ? '#a855f7' : '#c084fc'; 
                 ctx.shadowBlur = drawnSegments === 0 ? 20 : 5;
-                ctx.shadowColor = '#10b981';
+                ctx.shadowColor = '#a855f7';
                 
                 const radius = drawnSegments === 0 ? HEAD_RADIUS : Math.max(5, HEAD_RADIUS - (drawnSegments * 0.1));
                 

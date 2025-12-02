@@ -30,9 +30,20 @@
   }
 }
 </script>
+<!-- Inject API Key from Netlify Build -->
+<script src="env.js"></script>
+<script>
+  // Fallback for local development or if env.js fails to load
+  if (!window.process) {
+    window.process = { env: { API_KEY: '' } };
+  }
+</script>
+<!-- Babel Standalone for runtime TSX compilation -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"> </script>
+    <!-- Entry Point -->
+    <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
   </body>
 </html>
