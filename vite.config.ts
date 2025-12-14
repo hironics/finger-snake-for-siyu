@@ -8,10 +8,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Polyfill process.env.API_KEY for the client-side code
+      // JSON.stringify is needed because the 'define' plugin does a direct text replacement
       'process.env.API_KEY': JSON.stringify(env.API_KEY),
-      // Prevent other process.env access from crashing
-      'process.env': {} 
+      // If code accesses process.env.NODE_ENV, Vite usually handles it, 
+      // but we avoid defining the whole process.env object to prevent overwriting.
     },
   };
 });
